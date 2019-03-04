@@ -14,7 +14,7 @@ var app = new Vue({
 function listarTableros() {
 
     $.ajax({
-        url: serviceUrl + "tableros/listarTablerosUsuario/",
+        url: serviceUrl + "tableros/listarTableroPublicos/",
         type: "GET",
         headers: {"Authorization": "Token "+localStorage.pruebaCookies},
         success: function (result) {

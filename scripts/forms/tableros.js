@@ -6,7 +6,10 @@ var app = new Vue({
     data: {
         tableros: {},
         usuario: {},
-        tableroAñadir: {}
+        tableroAñadir: {},
+        tarjetaAñadir: {},
+        idTablero: "",
+        editSelected: "",
     }, methods: {
     }
 });
@@ -50,6 +53,10 @@ function habilitarBoton(idTarjeta){
     var id= "#Boton"+idTarjeta;
     $(id).css("display", "block");
 
+}
+
+function guardarIdTablero(idTablero){
+    app.idTablero=idTablero;
 }
 
 function actualizarTarjeta(idTarjeta){
@@ -96,7 +103,48 @@ function cerrarSesion() {
 }
 
 function añadirTablero(){
+    elementData = {
+        "nombreTablero": $("#nombre-edit").val(),
+        "estado": $("#estado-edit").val()
+    }
 
+    $.ajax({
+        url: serviceUrl + "tableros/crear_tablero/",
+        type: "POST",
+        headers: {"Authorization": "Token "+localStorage.pruebaCookies},
+        data: elementData,
+        success: function (result) {
+            listarTableros();
+            app.tableroAñadir = {};
+            console.log('lo logro');
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+function añadirTarjeta(){
+    elementData = {
+        "titulo": $("#nombre-tarjeta").val(),
+        "contenido": $("#contenido-tarjeta").val(),
+        "idTablero": app.idTablero
+    }
+
+    $.ajax({
+        url: serviceUrl + "tableros/crear_tarjeta/",
+        type: "POST",
+        headers: {"Authorization": "Token "+localStorage.pruebaCookies},
+        data: elementData,
+        success: function (result) {
+            listarTableros();
+            app.idTablero = "";
+            console.log('lo logro');
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 }
 
 $(document).ready(function () {

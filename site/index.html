@@ -76,9 +76,16 @@
             <!-- Divider -->
       <hr class="sidebar-divider">
 
+       <li class="nav-item">
+        <a class="nav-link" onclick="cerrarSesion()">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Cerrar Sesión</span></a>
+      </li>
+
             <!-- Divider -->
       <hr class="sidebar-divider">
       <!-- Heading -->
+
 
 
   
@@ -187,6 +194,15 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Tableros</h1>
+
+           <!-- <div class="div">
+          <ul>
+            <li><a href="#" target="_blank" class="icon-twitter" data-toggle="modal" data-target="#añadir-tablero-modal"><i class="fas fa-plus"></i></a></li>
+          </ul>
+          <ul>
+            <li><a href="#" target="_blank" class="icon-pinterest" v-on:click="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></a></li>
+          </ul>
+        </div>-->
           </div>
           
           <div class="row">
@@ -202,6 +218,9 @@
                 <!-- Card Content - Collapse -->
 
                 <div class="collapse show" :id="'Tablero'+tablero.idTablero">
+                <br>
+                  <button  type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#añadir-tarjeta-modal" v-on:click="guardarIdTablero(tablero.idTablero);">Añadir Tarjeta</button>
+
                   <div class="card-body" v-for="tarjeta in tablero.tarjetas">
                     <div class="col-lg-12">
                       <div class="card shadow mb-2">
@@ -246,15 +265,65 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" v-if="tableroAñadir">
-                    <form class="form row" id="form-editar-proveedor">
-                        
-							
+                      <div class="modal-body" v-if="tableroAñadir">
+                          <form class="form row" id="form-editar-proveedor">
+                              <div class="form-group mb-1 col-sm-12 col-md-7">
+                                  <label>Estado</label>
+                                  <select class="form-control" id="estado-edit" v-model="editSelected">
+                                  <option disabled value="">Seleccione una opcion</option>
+                                      <option value="Privado">
+                                          Privado
+                                      </option>
+                                      <option value="Público">
+                                          Público
+                                      </option>
+                                   </select>
+                              </div>
+                              <div class="form-group mb-1 col-sm-12 col-md-12">
+                                  <label>Titulo</label>
+                                  <input type="text" class="form-control" id="nombre-edit" v-bind:value="tableroAñadir.nombre">
+                              </div>
+                              
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <input class="btn btn-primary" type="submit" value="Guardar" v-on:click="guardarCambiosProveedor();"
+                    <input class="btn btn-primary" type="submit" value="Guardar" v-on:click="añadirTablero();"
+                        data-dismiss="modal" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal añadir tarjeta-->
+ <div class="modal fade" id="añadir-tarjeta-modal" tabindex="-1" role="dialog" aria-labelledby="añadir-tarjeta-modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir Tarjeta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                      <div class="modal-body" v-if="tarjetaAñadir">
+                          <form class="form row" id="form-editar-proveedor">
+                             
+                              <div class="form-group mb-1 col-sm-12 col-md-12">
+                                  <label>Titulo</label>
+                                  <input type="text" class="form-control" id="nombre-tarjeta" v-bind:value="tarjetaAñadir.nombre">
+                              </div>
+                              <div class="form-group mb-1 col-sm-12 col-md-12">
+                                  <label>Contenido</label>
+                                  <textarea type="text" class="form-control" id="contenido-tarjeta" v-bind:value="tarjetaAñadir.contenido">
+                                  </textarea>
+                              </div>
+                              
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <input class="btn btn-primary" type="submit" value="Guardar" v-on:click="añadirTarjeta();"
                         data-dismiss="modal" />
                 </div>
             </div>
@@ -263,6 +332,10 @@
 
         <!-- /.container-fluid -->
 </div>
+
+
+
+
       </div>
       <!-- End of Main Content -->
 
