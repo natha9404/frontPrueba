@@ -17,19 +17,13 @@
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="../css/barraFlotante.css" rel="stylesheet">
-
   <!-- Vue -->
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body id="page-top">
 
-
-  
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -58,13 +52,12 @@
       <hr class="sidebar-divider">
 
       <li class="nav-item">
-        <a class="nav-link" href="tablerosPublicos.html">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Tableros Públicos</span></a>
       </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+    <hr class="sidebar-divider">
 
       <li class="nav-item">
         <a class="nav-link" href="solicitudes.html">
@@ -85,7 +78,6 @@
             <!-- Divider -->
       <hr class="sidebar-divider">
       <!-- Heading -->
-
 
 
   
@@ -145,34 +137,33 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <div id="users">
-              <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{usuario}}</span>
-                  <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
                 </a>
-                <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
-                  </a>
-                </div>
-              </li>
-            </div>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
           </ul>
 
         </nav>
@@ -182,27 +173,9 @@
     <div id="app">
         <div class="container-fluid">
 
-        <div class="social">
-          <ul>
-            <li><a href="#" target="_blank" class="icon-twitter" data-toggle="modal" data-target="#añadir-tablero-modal"><i class="fas fa-plus"></i></a></li>
-          </ul>
-          <ul>
-            <li><a href="#" target="_blank" class="icon-pinterest" v-on:click="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></a></li>
-          </ul>
-        </div>
-      
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Tableros</h1>
-
-           <!-- <div class="div">
-          <ul>
-            <li><a href="#" target="_blank" class="icon-twitter" data-toggle="modal" data-target="#añadir-tablero-modal"><i class="fas fa-plus"></i></a></li>
-          </ul>
-          <ul>
-            <li><a href="#" target="_blank" class="icon-pinterest" v-on:click="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></a></li>
-          </ul>
-        </div>-->
           </div>
           
           <div class="row">
@@ -218,9 +191,6 @@
                 <!-- Card Content - Collapse -->
 
                 <div class="collapse show" :id="'Tablero'+tablero.idTablero">
-                <br>
-                  <button  type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#añadir-tarjeta-modal" v-on:click="guardarIdTablero(tablero.idTablero);">Añadir Tarjeta</button>
-
                   <div class="card-body" v-for="tarjeta in tablero.tarjetas">
                     <div class="col-lg-12">
                       <div class="card shadow mb-2">
@@ -234,7 +204,6 @@
                           <div class="card-body">
                           <input :id="'Input'+tarjeta.id" style="border:none" class="col-lg-12" v-bind:value="tarjeta.contenido" v-on:click="habilitarBoton(tarjeta.id);">
                           <button :id="'Boton'+tarjeta.id" type="submit" class="btn btn-succes btn-sm" style="display: none;" v-on:click="actualizarTarjeta(tarjeta.id);">Guardar</button>
-                          
                           </div>
                         </div>
                       
@@ -253,89 +222,8 @@
           </div>
 
         </div>
-
-<!--Modal añadir tablero-->
- <div class="modal fade" id="añadir-tablero-modal" tabindex="-1" role="dialog" aria-labelledby="añadir-tablero-modalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir Tablero</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                      <div class="modal-body" v-if="tableroAñadir">
-                          <form class="form row" id="form-editar-proveedor">
-                              <div class="form-group mb-1 col-sm-12 col-md-7">
-                                  <label>Estado</label>
-                                  <select class="form-control" id="estado-edit" v-model="editSelected">
-                                  <option disabled value="">Seleccione una opcion</option>
-                                      <option value="Privado">
-                                          Privado
-                                      </option>
-                                      <option value="Público">
-                                          Público
-                                      </option>
-                                   </select>
-                              </div>
-                              <div class="form-group mb-1 col-sm-12 col-md-12">
-                                  <label>Titulo</label>
-                                  <input type="text" class="form-control" id="nombre-edit" v-bind:value="tableroAñadir.nombre">
-                              </div>
-                              
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <input class="btn btn-primary" type="submit" value="Guardar" v-on:click="añadirTablero();"
-                        data-dismiss="modal" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Modal añadir tarjeta-->
- <div class="modal fade" id="añadir-tarjeta-modal" tabindex="-1" role="dialog" aria-labelledby="añadir-tarjeta-modalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir Tarjeta</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                      <div class="modal-body" v-if="tarjetaAñadir">
-                          <form class="form row" id="form-editar-proveedor">
-                             
-                              <div class="form-group mb-1 col-sm-12 col-md-12">
-                                  <label>Titulo</label>
-                                  <input type="text" class="form-control" id="nombre-tarjeta" v-bind:value="tarjetaAñadir.nombre">
-                              </div>
-                              <div class="form-group mb-1 col-sm-12 col-md-12">
-                                  <label>Contenido</label>
-                                  <textarea type="text" class="form-control" id="contenido-tarjeta" v-bind:value="tarjetaAñadir.contenido">
-                                  </textarea>
-                              </div>
-                              
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <input class="btn btn-primary" type="submit" value="Guardar" v-on:click="añadirTarjeta();"
-                        data-dismiss="modal" />
-                </div>
-            </div>
-        </div>
-    </div>
-
         <!-- /.container-fluid -->
 </div>
-
-
-
-
       </div>
       <!-- End of Main Content -->
 
@@ -388,7 +276,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
-  <script src="../scripts/forms/tableros.js" type="text/javascript"></script>
+  <script src="../scripts/forms/tablerosPublicos.js" type="text/javascript"></script>
   <script src="../scripts/forms/form-login-register.js" type="text/javascript"></script>
 
 
