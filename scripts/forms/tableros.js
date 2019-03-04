@@ -1,4 +1,4 @@
-const serviceUrl = 'http://127.0.0.1:8000/';
+const serviceUrl = 'https://natha9404.pythonanywhere.com/';
 
 
 var app = new Vue({
