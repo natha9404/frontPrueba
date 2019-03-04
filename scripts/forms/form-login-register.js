@@ -21,16 +21,16 @@ function login() {
             let cookies = { token: result.token};
             console.log('paso');
 			if (localStorage.pruebaCookies) {
-				localStorage.pruebaCookies = JSON.stringify(cookies);
+				localStorage.pruebaCookies = result.token;
 			} else {
-				localStorage.setItem('pruebaCookies', JSON.stringify(cookies));
+				localStorage.setItem('pruebaCookies', result.token);
             }
-            window.location.replace("site/index.html");
+            window.location.replace("site/");
 			
 		},
 		error: function (error) {
 			var cookies = { token: '', role: '' };
-			localStorage.setItem('pruebaCookies', JSON.stringify(cookies));
+			localStorage.setItem('pruebaCookies', result.token);
             console.log(error);
             console.log('HOLAAAA');
             document.getElementById('errorname').innerHTML ="Credenciales incorrectas, intente nuevamente.";

@@ -17,7 +17,9 @@
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-
+  <!-- Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body id="page-top">
@@ -150,41 +152,41 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
+    <div id="app">
         <div class="container-fluid">
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Tableros</h1>
           </div>
-
-
+          
           <div class="row">
 
           <!-- aQUI EMPIEZAN LOS FOR -->
-            <div class="col-lg-6">
+            <div class="col-lg-6" v-for="tablero in tableros">
 
               <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                <a v-bind:href="'#'+tablero.nombreTablero" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                  <h6 class="m-0 font-weight-bold text-primary">{{tablero.nombreTablero}}</h6>
                 </a>
                 <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample">
+                <div class="collapse show" v-bind:id="tablero.nombreTablero">
                   <div class="card-body">
                     <div class="col-lg-6">
-                                      <div class="card shadow mb-4">
-                                        <!-- Card Header - Accordion -->
-                                        <a href="#collapseCardExample5" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                          <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                                        </a>
-                                        <!-- Card Content - Collapse -->
-                                        <div class="collapse show" id="collapseCardExample5">
-                                          <div class="card-body">
-                                          <input>
+                      <div class="card shadow mb-4">
+                        <!-- Card Header - Accordion -->
+                        <a href="#collapseCardExample5" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                          <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                        </a>
+                        <!-- Card Content - Collapse -->
+                        <div class="collapse show" id="collapseCardExample5">
+                          <div class="card-body">
+                          <input>
 
-                                          </div>
-                                        </div>
-                                      </div>
+                          </div>
+                        </div>
+                      </div>
 
                     </div>
 
@@ -195,140 +197,11 @@
               
             </div>
 
-            <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
- <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
-             <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
-             <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
-             <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
-             <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
-             <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
-             <div class="col-lg-6">
-
-              <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample2">
-                  <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse show" id="collapseCardExample2">
-                  <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                  </div>
-                </div>
-              </div>
-
-            </div>
           </div>
 
         </div>
         <!-- /.container-fluid -->
-
+</div>
       </div>
       <!-- End of Main Content -->
 
@@ -381,6 +254,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+  <script src="../scripts/forms/tableros.js" type="text/javascript"></script>
 
 </body>
 
