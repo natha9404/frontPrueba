@@ -45,6 +45,38 @@ function obtenerUsuario() {
 
 }
 
+function habilitarBoton(idTarjeta){
+    var id= "#Boton"+idTarjeta;
+    $(id).css("display", "block");
+
+}
+
+function actualizarTarjeta(idTarjeta){
+    var input = "#Input"+idTarjeta;
+    var contenido = $(input).val();
+
+    elementData = {	
+        "modificarTarjeta":{
+        "idTarjeta":idTarjeta,
+        "contenido": contenido
+        }
+    }
+
+    $.ajax({
+        url: serviceUrl + "tableros/modificarTarjeta/",
+        type: "POST",
+        headers: {"Authorization": "Token "+localStorage.pruebaCookies},
+        data: elementData,
+        success: function (result) {
+            console.log('lo hizo')
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+
+}
+
 $(document).ready(function () {
     listarTableros();
     obtenerUsuario()

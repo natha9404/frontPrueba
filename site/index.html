@@ -167,25 +167,29 @@
 
               <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
-                <a v-bind:href="'#'+tablero.nombreTablero" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <a :href="'#Tablero'+tablero.idTablero" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                   <h6 class="m-0 font-weight-bold text-primary">{{tablero.nombreTablero}}</h6>
                 </a>
                 <!-- Card Content - Collapse -->
-                <div class="collapse show" v-bind:id="tablero.nombreTablero">
-                  <div class="card-body">
-                    <div class="col-lg-6">
-                      <div class="card shadow mb-4">
+
+                <div class="collapse show" :id="'Tablero'+tablero.idTablero">
+                  <div class="card-body" v-for="tarjeta in tablero.tarjetas">
+                    <div class="col-lg-12">
+                      <div class="card shadow mb-2">
+                      
                         <!-- Card Header - Accordion -->
-                        <a href="#collapseCardExample5" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                          <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                        <a :href="'#Tarjeta'+tarjeta.id" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                          <h6 class="m-0 font-weight-bold text-primary">{{tarjeta.titulo}}</h6>
                         </a>
                         <!-- Card Content - Collapse -->
-                        <div class="collapse show" id="collapseCardExample5">
+                        <div class="collapse show" :id="'Tarjeta'+tarjeta.id">
                           <div class="card-body">
-                          <input>
-
+                          <input :id="'Input'+tarjeta.id" style="border:none" class="col-lg-12" v-bind:value="tarjeta.contenido" v-on:click="habilitarBoton(tarjeta.id);">
+                          <button :id="'Boton'+tarjeta.id" type="submit" class="btn btn-succes btn-sm" style="display: none;" v-on:click="actualizarTarjeta(tarjeta.id);">Guardar</button>
                           </div>
                         </div>
+                      
+
                       </div>
 
                     </div>
