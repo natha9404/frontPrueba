@@ -5,7 +5,8 @@ var app = new Vue({
     el: '#app',
     data: {
         tableros: {},
-        usuario: {}
+        usuario: {},
+        tableroAñadir: {}
     }, methods: {
     }
 });
@@ -92,6 +93,10 @@ function cerrarSesion() {
             console.log('HOLAAAA');
 		}
 	});
+}
+
+function añadirTablero(){
+
 }
 
 $(document).ready(function () {

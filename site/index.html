@@ -17,13 +17,19 @@
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/barraFlotante.css" rel="stylesheet">
+
   <!-- Vue -->
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body id="page-top">
 
+
+  
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -69,11 +75,6 @@
 
             <!-- Divider -->
       <hr class="sidebar-divider">
-
-   
-      <button class="" v-on:click="cerrarSesion();">HOLA</button>
-
-     
 
             <!-- Divider -->
       <hr class="sidebar-divider">
@@ -174,6 +175,15 @@
     <div id="app">
         <div class="container-fluid">
 
+        <div class="social">
+          <ul>
+            <li><a href="#" target="_blank" class="icon-twitter" data-toggle="modal" data-target="#añadir-tablero-modal"><i class="fas fa-plus"></i></a></li>
+          </ul>
+          <ul>
+            <li><a href="#" target="_blank" class="icon-pinterest" v-on:click="cerrarSesion();"><i class="fas fa-sign-out-alt"></i></a></li>
+          </ul>
+        </div>
+      
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Tableros</h1>
@@ -224,6 +234,33 @@
           </div>
 
         </div>
+
+<!--Modal añadir tablero-->
+ <div class="modal fade" id="añadir-tablero-modal" tabindex="-1" role="dialog" aria-labelledby="añadir-tablero-modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir Tablero</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" v-if="tableroAñadir">
+                    <form class="form row" id="form-editar-proveedor">
+                        
+							
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <input class="btn btn-primary" type="submit" value="Guardar" v-on:click="guardarCambiosProveedor();"
+                        data-dismiss="modal" />
+                </div>
+            </div>
+        </div>
+    </div>
+
         <!-- /.container-fluid -->
 </div>
       </div>
