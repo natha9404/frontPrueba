@@ -77,23 +77,6 @@ function actualizarTarjeta(idTarjeta){
 
 }
 
-function cerrarSesion() {
-	console.log('entre aqui')
-	$.ajax({
-		url: serviceUrl + 'usuarios/logout/',
-        type: 'POST',
-        headers: {"Authorization": "Token "+localStorage.pruebaCookies},
-		success: function (result) {
-            window.location.replace("../");
-			
-		},
-		error: function (error) {
-            console.log(error);
-            console.log('HOLAAAA');
-		}
-	});
-}
-
 $(document).ready(function () {
     listarTableros();
     obtenerUsuario()

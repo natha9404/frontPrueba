@@ -41,6 +41,23 @@ function login() {
 	});
 }
 
+
+function cerrarSesion() {
+	console.log('entre aqui')
+	$.ajax({
+		url: serviceUrl + 'usuarios/logout/',
+        type: 'POST',
+        headers: {"Authorization": "Token "+localStorage.pruebaCookies},
+		success: function (result) {
+            window.location.replace("../site/");
+			
+		},
+		error: function (error) {
+            console.log(error);
+            console.log('HOLAAAA');
+		}
+	});
+}
 /*
 $(document).ready ( function(){
 	console.log('>>>>>>>>>>>>>>>>>>>>>>>> object',localStorage.linceCookie);

@@ -4,22 +4,21 @@ const serviceUrl = 'http://127.0.0.1:8000/';
 var app = new Vue({
     el: '#app',
     data: {
-        tableros: {},
-        usuario: {}
+        solicitudes: {},
     }, methods: {
     }
 });
 
 
-function listarTableros() {
+function listarSolicitudes() {
 
     $.ajax({
-        url: serviceUrl + "tableros/listarTablerosUsuario/",
+        url: serviceUrl + "tableros/listar_solicitudes/",
         type: "GET",
         headers: {"Authorization": "Token "+localStorage.pruebaCookies},
         success: function (result) {
-            app.tableros = result.data;
-            console.log(result.data)
+            app.solicitudes = result.data.info;
+            console.log(result.data.info)
         },
         error: function (error) {
             console.log(error);
@@ -45,29 +44,22 @@ function obtenerUsuario() {
 
 }
 
-function habilitarBoton(idTarjeta){
-    var id= "#Boton"+idTarjeta;
-    $(id).css("display", "block");
 
-}
-
-function actualizarTarjeta(idTarjeta){
-    var input = "#Input"+idTarjeta;
-    var contenido = $(input).val();
-    var id= "#Boton"+idTarjeta;
+function aprobarSolicitud(idSolicitud){
 
     elementData = {
-		'idTarjeta': idTarjeta,
-		'contenido': $(input).val()
+		'solicitud': idSolicitud,
     }
     
     $.ajax({
-        url: serviceUrl + "tableros/modificarTarjeta/",
+        url: serviceUrl + "tableros/aprobar_solicitudes/",
         type: "POST",
         headers: {"Authorization": "Token "+localStorage.pruebaCookies},
         data: elementData,
         success: function (result) {
-            $(id).css("display", "none");
+            console.log('LO HIZO')
+            window.location.replace("../site/");
+
 
         },
         error: function (error) {
@@ -77,24 +69,7 @@ function actualizarTarjeta(idTarjeta){
 
 }
 
-function cerrarSesion() {
-	console.log('entre aqui')
-	$.ajax({
-		url: serviceUrl + 'usuarios/logout/',
-        type: 'POST',
-        headers: {"Authorization": "Token "+localStorage.pruebaCookies},
-		success: function (result) {
-            window.location.replace("../");
-			
-		},
-		error: function (error) {
-            console.log(error);
-            console.log('HOLAAAA');
-		}
-	});
-}
-
 $(document).ready(function () {
-    listarTableros();
+    listarSolicitudes();
     obtenerUsuario()
 });
